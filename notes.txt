@@ -1,0 +1,94 @@
+Create a basic solution (i.e. MVP) and increase sophistication.
+Start with only supporting standard input.
+Full unit test coverage.
+Full documentation.
+Need test provide test data!
+Implement some kind of automated system testing?
+
+
+
+Thoughts
+--------
+
+What voice should the program use to communicate to the user?  
+
+The robot needs to know it's the location on the table as cartesian coordinates.
+
+"The application should discard all commands in the sequence until a valid `PLACE` command has been
+executed."
+This statement implies that a robot can have 0 or 1 tables, with 0 tables as the default state. The PLACE commands the assigns a robot to a table. Therefore, the robot's heading and location are nullable.
+
+A command can both relative to the robots current location (LEFT, RIGHT and MOVE) and absolute (PLACE).
+
+The Challenge is written in a way that it allows the developer to think of the problem as a board game where the table is 5 x 5 grid of squares, and the toy robot occupies one of those squares.
+This raises the interesting question: What is the width of the robot? If the robot "must be prevented from falling to destruction" can it safely occupy the locations at the very edge of the table without toppling off?
+Since some of the examples begin with the robot on the edge of the table, it is reasonable to assume that the robot has no width (is a point).
+
+The problem doesn't prescribe or otherwise define length as a value. Instead refers to the unit of measure for length abstractly as "units", and all the example length values are integers.
+Can length be a real number???
+
+There is distinct application logic and domain logic. A solution that seeks to provide a clear separation between the application logic and domain logic would be regarded more highly than one that didn't.
+Commands are the only mechanism that the application logic interfaces with the domain logic.
+Command as defined by the problem description lends itself to be an interface, with the concrete implementation being a hierarchy of classes. i.e Abstract Turn, LeftTurn, RightTurn
+The Challenge implies that commands are executed only on exactly 1 robot.
+
+Command results will require success, errors and warnings!
+
+The Challenge isn't prescriptive regarding the application logic, leaving much of the detail to the developer discretion.
+The Challenge leaves it to the developer to choose whether to support file or standard input. It's transparent that a solution that implements both methods would be more highly regarded than a solution only implemented one.
+The Challenge makes no mention if it is a requirement that commands executed individually or as a batch (or both). However, if your support both file and standard input, then it follows both batch and single command executed is required.
+
+Application logic needs to include a parsing and a lexing code. Even though both of these functions should be trivial to implement, a good solution would keep them distinct.
+
+The Challenge gives little guidance as to how to handle errors.
+Invalid commands - "Any move that would cause the robot to fall must be ignored."
+Unknown commands - ???
+Known commands with an invalid format - ???
+
+Ignore any commands that will put the robot into an invalid state, and continue to execute subsequent commands.
+What about unknown commands and known commands with an invalid format?
+
+There is inconsistency in the language in about how to handle the commands issues before the first PLACE command:
+"The application should discard all commands in the sequence until a valid `PLACE` command has been
+executed."
+"A robot that is not on the table can choose the ignore the `MOVE`, `LEFT`, `RIGHT` and `REPORT`
+commands" 
+
+Command interface to include "complete" flag.
+Command interface to include command result, and message.
+I am thinking that the command with analogous to a .NET Task class.
+
+Application default state:
+1 Robot, not placed. (No heading or direction)
+1 5x5 table.
+
+*** The default state of the application, and the format & function of the commands as outline in The Challenge needs to be always preserved ***
+The idea of extending the program to handle multiple robots or tables is exciting but can not violate the previous statement.
+
+
+
+To-Do
+-----
+initial square table constant dimensions with no knowledge of the robot
+store robot location in as a cartesian coordinate
+store robot heading as a compass point
+allow the application logic to specify table dimensions
+create rectangle table base class, with square table inheriting from it
+create table interface to allow table surface to have any shape potentially
+store a collection of robots on the table and the methods to detect if a square already contains a robot, the location a particular robot is in etc
+MOVE can optionally move the report any distance forward
+allow the robot to move fractional amount.
+define robot size (a shape?)
+refactor code to separate between domain and application logic
+support both file and standard input commands
+provide a filename as a command-line argument
+store movement history for each robot
+convert robot heading in degrees and define LEFT, RIGHT, NORTH, SOUTH, EAST and WEST in terms of degrees
+new and different commands? relative PLACE, 180-degree turn, reverse, sidestep, history, distance until table edge
+table obstructions
+execute a batch of commands via standard input
+non-robot commands
+load file command
+clear/reset command
+multiple robots
+multiple tables
