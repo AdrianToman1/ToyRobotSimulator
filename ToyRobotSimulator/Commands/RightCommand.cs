@@ -26,15 +26,9 @@
                 return;
             }
 
-            robot.Heading = (robot.Heading.Value - 90) % 360;
-
-            if (robot.Heading < 0)
-            {
-                robot.Heading = 360 + robot.Heading;
-            }
+            robot.Heading = robot.Heading.Value - 90;
 
             // TODO: Refactor to a rotation command that accepts degrees.
-            // TODO: Refactor Robot.Heading to handle the normalization of heading to the range of 0-359.
         }
     }
 }

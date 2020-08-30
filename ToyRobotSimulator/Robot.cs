@@ -7,6 +7,8 @@ namespace ToyRobotSimulator
     /// </summary>
     public class Robot
     {
+        private int? _heading;
+
         /// <summary>
         ///     Initializes a new instance of the <seealso cref="Robot" /> class.
         /// </summary>
@@ -42,8 +44,23 @@ namespace ToyRobotSimulator
         /// </summary>
         /// <remarks>
         ///     This value is null when the robot isn't placed on the table.
+        ///     Heading will be normalized to be within the range 0 to 359 degrees.
         /// </remarks>
-        public int? Heading { get; set; }
+        public int? Heading
+        {
+            get => _heading;
+            set
+            {
+                // Normalize heading to the range -359 to 359
+                _heading = value % 360;
+
+                // Translate negative headings to the range 0 to 359
+                if (_heading < 0)
+                {
+                    _heading = 360 + _heading;
+                }
+            }
+        }
 
         /// <summary>
         ///     The current table that the robot is roaming upon.
@@ -85,12 +102,7 @@ namespace ToyRobotSimulator
             Table = table;
             X = x;
             Y = y;
-            Heading = heading % 360;
-
-            if (Heading < 0)
-            {
-                Heading = 360 + Heading;
-            }
+            Heading = heading;
         }
 
         /// <summary>

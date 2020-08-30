@@ -3,3 +3,4 @@
 25/8/2020,2.5,Finalised Table and Robot classes. Commenced work on Commands.
 26/8/2020,1.5,Continued work on Commands.
 30/8/2020,2.0,Finalised Commands.
+30/8/2020,0.5,Refactor Robot.Heading to normalise to the range 0 - 359.

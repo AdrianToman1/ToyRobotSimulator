@@ -20,6 +20,149 @@ namespace ToyRobotSimulator.UnitTests
         }
 
         [Fact]
+        public void Heading_Set0_0()
+        {
+            // Arrange
+            var robot = new Robot();
+
+            // Act
+            robot.Heading = 0;
+
+            // Assert
+            Assert.Equal(0, robot.Heading);
+        }
+
+        [Fact]
+        public void Heading_Set1_1()
+        {
+            // Arrange
+            var robot = new Robot();
+
+            // Act
+            robot.Heading = 1;
+
+            // Assert
+            Assert.Equal(1, robot.Heading);
+        }
+
+        [Fact]
+        public void Heading_SetMinus1_359()
+        {
+            // Arrange
+            var robot = new Robot();
+
+            // Act
+            robot.Heading = -1;
+
+            // Assert
+            Assert.Equal(359, robot.Heading);
+        }
+
+        [Fact]
+        public void Heading_Set359_359()
+        {
+            // Arrange
+            var robot = new Robot();
+
+            // Act
+            robot.Heading = 359;
+
+            // Assert
+            Assert.Equal(359, robot.Heading);
+        }
+
+        [Fact]
+        public void Heading_SetMinus359_1()
+        {
+            // Arrange
+            var robot = new Robot();
+
+            // Act
+            robot.Heading = -359;
+
+            // Assert
+            Assert.Equal(1, robot.Heading);
+        }
+
+        [Fact]
+        public void Heading_Set360_0()
+        {
+            // Arrange
+            var robot = new Robot();
+
+            // Act
+            robot.Heading = 360;
+
+            // Assert
+            Assert.Equal(0, robot.Heading);
+        }
+
+        [Fact]
+        public void Heading_SetMinus360_0()
+        {
+            // Arrange
+            var robot = new Robot();
+
+            // Act
+            robot.Heading = -360;
+
+            // Assert
+            Assert.Equal(0, robot.Heading);
+        }
+
+        [Fact]
+        public void Heading_Set361_1()
+        {
+            // Arrange
+            var robot = new Robot();
+
+            // Act
+            robot.Heading = 361;
+
+            // Assert
+            Assert.Equal(1, robot.Heading);
+        }
+
+        [Fact]
+        public void Heading_SetMinus361_359()
+        {
+            // Arrange
+            var robot = new Robot();
+
+            // Act
+            robot.Heading = -361;
+
+            // Assert
+            Assert.Equal(359, robot.Heading);
+        }
+
+        [Fact]
+        public void Heading_Set720_0()
+        {
+            // Arrange
+            var robot = new Robot();
+
+            // Act
+            robot.Heading = 720;
+
+            // Assert
+            Assert.Equal(0, robot.Heading);
+        }
+
+        [Fact]
+        public void Heading_SetMinus720_0()
+        {
+            // Arrange
+            var robot = new Robot();
+
+            // Act
+            robot.Heading = -720;
+
+            // Assert
+            Assert.Equal(0, robot.Heading);
+        }
+
+        [Fact]
         public void PlaceOnTable_TableNull_ThrowsArgumentNullException()
         {
             // Arrange

@@ -23,10 +23,9 @@
             // Ignore left command until the robot is on a table.
             if (robot.IsOnTheTable())
             {
-                robot.Heading = (robot.Heading + 90) % 360;
+                robot.Heading = robot.Heading + 90;
 
                 // TODO: Refactor to a rotation command that accepts degrees.
-                // TODO: Refactor Robot.Heading to handle the normalization of heading to the range of 0-359.
             }
         }
     }
