@@ -124,6 +124,8 @@ Vector addition
     <x, y> = <x1 + x2, y1 + y2> 
 
 
+Brad suggested that using a "controller pattern and some model classes to hold state information". I think having a Simulation class to contain the current simulation context (the current robot and table) has merit.
+
 
 Ideas
 -----

@@ -12,12 +12,17 @@ namespace ToyRobotSimulator.Commands
         /// <summary>
         ///     Initializes a new instance of the <seealso cref="ReportCommand" /> class.
         /// </summary>
+        /// <param name="textWriter">The report output destination</param>
+        /// <exception cref="ArgumentNullException"><c>textWriter</c> is null.</exception>
         /// <inheritdoc />
-        public ReportCommand(Robot robot, TextWriter textWriter) : base(robot)
+        public ReportCommand(TextWriter textWriter)
         {
             TextWriter = textWriter ?? throw new ArgumentNullException(nameof(textWriter));
         }
 
+        /// <summary>
+        ///     Gets and the report output destination. 
+        /// </summary>
         public TextWriter TextWriter { get; set; }
 
         /// <summary>

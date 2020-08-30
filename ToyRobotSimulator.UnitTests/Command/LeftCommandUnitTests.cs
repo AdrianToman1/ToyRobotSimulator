@@ -6,27 +6,14 @@ namespace ToyRobotSimulator.UnitTests.Command
     public class LeftCommandUnitTests
     {
         [Fact]
-        public void InstantiateLeftCommand_OK()
-        {
-            // Arrange
-            var robot = new Robot();
-
-            // Act
-            var leftCommand = new LeftCommand(robot);
-
-            // Assert
-            Assert.NotNull(leftCommand);
-        }
-
-        [Fact]
         public void Execute_RobotNotPlacedOnTable_NoEffect()
         {
             // Arrange
             var robot = new Robot();
-            var leftCommand = new LeftCommand(robot);
+            var leftCommand = new LeftCommand();
 
             // Act
-            leftCommand.Execute();
+            leftCommand.Execute(robot);
 
             // Assert
             Assert.Null(robot.Heading);
@@ -45,10 +32,10 @@ namespace ToyRobotSimulator.UnitTests.Command
             var heading = (int) CompassPoint.North;
             robot.PlaceOnTable(table, x, y, heading);
 
-            var leftCommand = new LeftCommand(robot);
+            var leftCommand = new LeftCommand();
 
             // Act
-            leftCommand.Execute();
+            leftCommand.Execute(robot);
 
             // Assert
             Assert.Equal(x, robot.X);
@@ -68,10 +55,10 @@ namespace ToyRobotSimulator.UnitTests.Command
             var heading = (int) CompassPoint.South;
             robot.PlaceOnTable(table, x, y, heading);
 
-            var leftCommand = new LeftCommand(robot);
+            var leftCommand = new LeftCommand();
 
             // Act
-            leftCommand.Execute();
+            leftCommand.Execute(robot);
 
             // Assert
             Assert.Equal(x, robot.X);
@@ -91,10 +78,10 @@ namespace ToyRobotSimulator.UnitTests.Command
             var heading = (int) CompassPoint.East;
             robot.PlaceOnTable(table, x, y, heading);
 
-            var leftCommand = new LeftCommand(robot);
+            var leftCommand = new LeftCommand();
 
             // Act
-            leftCommand.Execute();
+            leftCommand.Execute(robot);
 
             // Assert
             Assert.Equal(x, robot.X);
@@ -114,10 +101,10 @@ namespace ToyRobotSimulator.UnitTests.Command
             var heading = (int) CompassPoint.West;
             robot.PlaceOnTable(table, x, y, heading);
 
-            var leftCommand = new LeftCommand(robot);
+            var leftCommand = new LeftCommand();
 
             // Act
-            leftCommand.Execute();
+            leftCommand.Execute(robot);
 
             // Assert
             Assert.Equal(x, robot.X);

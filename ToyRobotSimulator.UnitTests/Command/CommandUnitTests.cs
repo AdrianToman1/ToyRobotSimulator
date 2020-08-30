@@ -6,24 +6,13 @@ namespace ToyRobotSimulator.UnitTests.Command
     public class CommandUnitTests
     {
         [Fact]
-        public void InstantiateCommand_OK()
+        public void Execute_RobotNull_ThrowsArgumentNullException()
         {
             // Arrange
-            var robot = new Robot();
+            var command = new TestCommand();
 
-            // Act
-            var command = new TestCommand(robot);
-
-            // Assert
-            Assert.NotNull(command);
-            Assert.Same(robot, command.Robot);
-        }
-
-        [Fact]
-        public void InstantiateCommand_RobotNull_ThrowsArgumentNullException()
-        {
-            // Arrange, Act & Assert
-            Assert.Throws<ArgumentNullException>("robot", () => new TestCommand(null));
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>("robot", () => command.Execute(null));
         }
 
         [Fact]
@@ -31,10 +20,10 @@ namespace ToyRobotSimulator.UnitTests.Command
         {
             // Arrange
             var robot = new Robot();
-            var command = new TestCommand(robot);
+            var command = new TestCommand();
 
             // Act
-            command.Execute();
+            command.Execute(robot);
 
             // Assert
             Assert.Equal(1, robot.X);
@@ -43,10 +32,6 @@ namespace ToyRobotSimulator.UnitTests.Command
 
         private class TestCommand : Commands.Command
         {
-            public TestCommand(Robot robot) : base(robot)
-            {
-            }
-
             protected override void DoExecute(Robot robot)
             {
                 robot.X = 1;

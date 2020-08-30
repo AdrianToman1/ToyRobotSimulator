@@ -7,14 +7,6 @@
     public class LeftCommand : Command
     {
         /// <summary>
-        ///     Initializes a new instance of the <seealso cref="LeftCommand" /> class.
-        /// </summary>
-        /// <inheritdoc />
-        public LeftCommand(Robot robot) : base(robot)
-        {
-        }
-
-        /// <summary>
         ///     Handles the left command execution for the provided robot
         /// </summary>
         /// <inheritdoc />

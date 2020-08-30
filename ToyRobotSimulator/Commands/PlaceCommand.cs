@@ -12,7 +12,7 @@ namespace ToyRobotSimulator.Commands
         ///     Initializes a new instance of the <seealso cref="PlaceCommand" /> class.
         /// </summary>
         /// <inheritdoc />
-        public PlaceCommand(Robot robot, Table table, int x, int y, CompassPoint heading) : base(robot)
+        public PlaceCommand(Table table, int x, int y, CompassPoint heading)
         {
             if (table == null)
             {

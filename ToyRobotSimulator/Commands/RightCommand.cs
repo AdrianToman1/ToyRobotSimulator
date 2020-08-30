@@ -7,14 +7,6 @@
     public class RightCommand : Command
     {
         /// <summary>
-        ///     Initializes a new instance of the <seealso cref="RightCommand" /> class.
-        /// </summary>
-        /// <inheritdoc />
-        public RightCommand(Robot robot) : base(robot)
-        {
-        }
-
-        /// <summary>
         ///     Handles the right command execution for the provided robot
         /// </summary>
         /// <inheritdoc />

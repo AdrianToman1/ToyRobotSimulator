@@ -9,14 +9,6 @@ namespace ToyRobotSimulator.Commands
     public class MoveCommand : Command
     {
         /// <summary>
-        ///     Initializes a new instance of the <seealso cref="MoveCommand" /> class.
-        /// </summary>
-        /// <inheritdoc />
-        public MoveCommand(Robot robot) : base(robot)
-        {
-        }
-
-        /// <summary>
         ///     Handles the move command execution for the provided robot
         /// </summary>
         /// <inheritdoc />

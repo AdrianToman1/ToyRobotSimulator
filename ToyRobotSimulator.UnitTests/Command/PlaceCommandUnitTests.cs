@@ -10,14 +10,13 @@ namespace ToyRobotSimulator.UnitTests.Command
         public void InstantiatePlaceCommand_OK()
         {
             // Arrange
-            var robot = new Robot();
             var table = new Table();
             var x = 0;
             var y = 0;
             var heading = CompassPoint.North;
 
             // Act
-            var placeCommand = new PlaceCommand(robot, table, x, y, heading);
+            var placeCommand = new PlaceCommand(table, x, y, heading);
 
             // Assert
             Assert.NotNull(placeCommand);
@@ -31,27 +30,25 @@ namespace ToyRobotSimulator.UnitTests.Command
         public void InstantiateReportCommand_TableNull_ThrowsArgumentNullException()
         {
             // Arrange
-            var robot = new Robot();
             var x = 0;
             var y = 0;
             var heading = CompassPoint.North;
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("table", () => new PlaceCommand(robot, null, x, y, heading));
+            Assert.Throws<ArgumentNullException>("table", () => new PlaceCommand(null, x, y, heading));
         }
 
         [Fact]
         public void InstantiateReportCommand_LocationInvalid_ThrowsArgumentException()
         {
             // Arrange
-            var robot = new Robot();
             var table = new Table();
             var x = 5;
             var y = 5;
             var heading = CompassPoint.North;
 
             // Act & Assert
-            Assert.Throws<ArgumentException>(() => new PlaceCommand(robot, table, x, y, heading));
+            Assert.Throws<ArgumentException>(() => new PlaceCommand(table, x, y, heading));
         }
 
         [Fact]
@@ -63,10 +60,10 @@ namespace ToyRobotSimulator.UnitTests.Command
             var x = 0;
             var y = 0;
             var heading = CompassPoint.North;
-            var placeCommand = new PlaceCommand(robot, table, x, y, heading);
+            var placeCommand = new PlaceCommand(table, x, y, heading);
 
             // Act
-            placeCommand.Execute();
+            placeCommand.Execute(robot);
 
             // Assert
             Assert.NotNull(placeCommand);
@@ -86,16 +83,16 @@ namespace ToyRobotSimulator.UnitTests.Command
             var x = 0;
             var y = 0;
             var heading = CompassPoint.North;
-            var placeCommand = new PlaceCommand(robot, table, x, y, heading);
-            placeCommand.Execute();
+            var placeCommand = new PlaceCommand(table, x, y, heading);
+            placeCommand.Execute(robot);
 
             // Act
             // Replace robot on table in different location and heading.
             x = 1;
             y = 1;
             heading = CompassPoint.West;
-            var replaceCommand = new PlaceCommand(robot, table, x, y, heading);
-            replaceCommand.Execute();
+            var replaceCommand = new PlaceCommand(table, x, y, heading);
+            replaceCommand.Execute(robot);
 
             // Assert
             Assert.NotNull(placeCommand);
@@ -115,8 +112,8 @@ namespace ToyRobotSimulator.UnitTests.Command
             var x1 = 0;
             var y1 = 0;
             var heading1 = CompassPoint.North;
-            var placeCommand = new PlaceCommand(robot, table1, x1, y1, heading1);
-            placeCommand.Execute();
+            var placeCommand = new PlaceCommand(table1, x1, y1, heading1);
+            placeCommand.Execute(robot);
 
             // Act
             // Replace robot on table2
@@ -124,8 +121,8 @@ namespace ToyRobotSimulator.UnitTests.Command
             var x2 = 0;
             var y2 = 0;
             var heading2 = CompassPoint.North;
-            var replaceCommand = new PlaceCommand(robot, table2, x2, y2, heading2);
-            replaceCommand.Execute();
+            var replaceCommand = new PlaceCommand(table2, x2, y2, heading2);
+            replaceCommand.Execute(robot);
 
             // Assert
             Assert.NotNull(placeCommand);

@@ -11,11 +11,10 @@ namespace ToyRobotSimulator.UnitTests.Command
         public void InstantiateReportCommand_OK()
         {
             // Arrange
-            var robot = new Robot();
             var textWriter = new StringWriter();
 
             // Act
-            var reportCommand = new ReportCommand(robot, textWriter);
+            var reportCommand = new ReportCommand(textWriter);
 
             // Assert
             Assert.NotNull(reportCommand);
@@ -25,11 +24,8 @@ namespace ToyRobotSimulator.UnitTests.Command
         [Fact]
         public void InstantiateReportCommand_TextWriterNull_ThrowsArgumentNullException()
         {
-            // Arrange
-            var robot = new Robot();
-
-            // Act & Assert
-            Assert.Throws<ArgumentNullException>("textWriter", () => new ReportCommand(robot, null));
+            // Arrange, Act & Assert
+            Assert.Throws<ArgumentNullException>("textWriter", () => new ReportCommand(null));
         }
 
         [Fact]
@@ -38,10 +34,10 @@ namespace ToyRobotSimulator.UnitTests.Command
             // Arrange
             var robot = new Robot();
             var textWriter = new StringWriter();
-            var reportCommand = new ReportCommand(robot, textWriter);
+            var reportCommand = new ReportCommand(textWriter);
 
             // Act
-            reportCommand.Execute();
+            reportCommand.Execute(robot);
 
             // Assert
             Assert.Null(robot.Heading);
@@ -61,10 +57,10 @@ namespace ToyRobotSimulator.UnitTests.Command
             robot.PlaceOnTable(table, x, y, heading);
             var textWriter = new StringWriter();
 
-            var reportCommand = new ReportCommand(robot, textWriter);
+            var reportCommand = new ReportCommand(textWriter);
 
             // Act
-            reportCommand.Execute();
+            reportCommand.Execute(robot);
 
             // Assert
             Assert.Equal(x, robot.X);

@@ -6,27 +6,14 @@ namespace ToyRobotSimulator.UnitTests.Command
     public class MoveCommandUnitTests
     {
         [Fact]
-        public void InstantiateMoveCommand_OK()
-        {
-            // Arrange
-            var robot = new Robot();
-
-            // Act
-            var moveCommand = new MoveCommand(robot);
-
-            // Assert
-            Assert.NotNull(moveCommand);
-        }
-
-        [Fact]
         public void Execute_RobotNotPlacedOnTable_NoEffect()
         {
             // Arrange
             var robot = new Robot();
-            var moveCommand = new MoveCommand(robot);
+            var moveCommand = new MoveCommand();
 
             // Act
-            moveCommand.Execute();
+            moveCommand.Execute(robot);
 
             // Assert
             Assert.Null(robot.Heading);
@@ -44,10 +31,10 @@ namespace ToyRobotSimulator.UnitTests.Command
             var heading = (int) CompassPoint.North;
             robot.PlaceOnTable(table, x, y, heading);
 
-            var moveCommand = new MoveCommand(robot);
+            var moveCommand = new MoveCommand();
 
             // Act
-            moveCommand.Execute();
+            moveCommand.Execute(robot);
 
             // Assert
             Assert.Equal(x, robot.X);
@@ -66,10 +53,10 @@ namespace ToyRobotSimulator.UnitTests.Command
             var heading = (int) CompassPoint.South;
             robot.PlaceOnTable(table, x, y, heading);
 
-            var moveCommand = new MoveCommand(robot);
+            var moveCommand = new MoveCommand();
 
             // Act
-            moveCommand.Execute();
+            moveCommand.Execute(robot);
 
             // Assert
             Assert.Equal(x, robot.X);
@@ -88,10 +75,10 @@ namespace ToyRobotSimulator.UnitTests.Command
             var heading = (int) CompassPoint.East;
             robot.PlaceOnTable(table, x, y, heading);
 
-            var moveCommand = new MoveCommand(robot);
+            var moveCommand = new MoveCommand();
 
             // Act
-            moveCommand.Execute();
+            moveCommand.Execute(robot);
 
             // Assert
             Assert.Equal(x + 1, robot.X);
@@ -110,10 +97,10 @@ namespace ToyRobotSimulator.UnitTests.Command
             var heading = (int) CompassPoint.West;
             robot.PlaceOnTable(table, x, y, heading);
 
-            var moveCommand = new MoveCommand(robot);
+            var moveCommand = new MoveCommand();
 
             // Act
-            moveCommand.Execute();
+            moveCommand.Execute(robot);
 
             // Assert
             Assert.Equal(x - 1, robot.X);
@@ -132,10 +119,10 @@ namespace ToyRobotSimulator.UnitTests.Command
             var heading = (int) CompassPoint.North;
             robot.PlaceOnTable(table, x, y, heading);
 
-            var moveCommand = new MoveCommand(robot);
+            var moveCommand = new MoveCommand();
 
             // Act
-            moveCommand.Execute();
+            moveCommand.Execute(robot);
 
             // Assert
             Assert.Equal(x, robot.X);
@@ -154,10 +141,10 @@ namespace ToyRobotSimulator.UnitTests.Command
             var heading = (int) CompassPoint.South;
             robot.PlaceOnTable(table, x, y, heading);
 
-            var moveCommand = new MoveCommand(robot);
+            var moveCommand = new MoveCommand();
 
             // Act
-            moveCommand.Execute();
+            moveCommand.Execute(robot);
 
             // Assert
             Assert.Equal(x, robot.X);
@@ -176,10 +163,10 @@ namespace ToyRobotSimulator.UnitTests.Command
             var heading = (int) CompassPoint.East;
             robot.PlaceOnTable(table, x, y, heading);
 
-            var moveCommand = new MoveCommand(robot);
+            var moveCommand = new MoveCommand();
 
             // Act
-            moveCommand.Execute();
+            moveCommand.Execute(robot);
 
             // Assert
             Assert.Equal(x, robot.X);
@@ -198,10 +185,10 @@ namespace ToyRobotSimulator.UnitTests.Command
             var heading = (int) CompassPoint.West;
             robot.PlaceOnTable(table, x, y, heading);
 
-            var moveCommand = new MoveCommand(robot);
+            var moveCommand = new MoveCommand();
 
             // Act
-            moveCommand.Execute();
+            moveCommand.Execute(robot);
 
             // Assert
             Assert.Equal(x, robot.X);
