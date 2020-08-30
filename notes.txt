@@ -105,11 +105,32 @@ Should the cartesian coordinates be a tuple, or other suitable class, instead of
 Should the heading by it's own class containing encompassing all the required logic do turns etc.
 
 
-To-Do
+Determine a vector's x and y components from it's magitude (v) and direction (a).
+
+    y . . ._  
+     |     /|
+     |  v / .
+     |   /  .
+     |  /   .
+     | /  a .
+     |/_)___. 
+             x
+
+    <x, y> = <v cos a, v sin a>
+
+
+Vector addition
+
+    <x, y> = <x1 + x2, y1 + y2> 
+
+
+
+Ideas
 -----
 initial square table constant dimensions with no knowledge of the robot
-store robot location in as a cartesian coordinate
-store robot heading as a compass point
+store robot location in as a cartesian coordinates
+store robot heading as a degrees from x-axis
+
 allow the application logic to specify table dimensions
 create rectangle table base class, with square table inheriting from it
 create table interface to allow table surface to have any shape potentially

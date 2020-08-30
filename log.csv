@@ -1,3 +1,5 @@
 ﻿23/8/2020,3.0,Initial project setup and analysis of the requirements
 24/8/2020,1.0,Created Table and Robot classes. Thought more about how to best represent robot heading and location.
-25/8/2020,1.0,Finalised Table and Robot classes.
+25/8/2020,2.5,Finalised Table and Robot classes. Commenced work on Commands.
+26/8/2020,1.5,Continued work on Commands.
+30/8/2020,2.0,Finalised Commands.
