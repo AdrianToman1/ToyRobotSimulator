@@ -132,6 +132,7 @@ Ideas
 initial square table constant dimensions with no knowledge of the robot
 store robot location in as a cartesian coordinates
 store robot heading as a degrees from x-axis
+return the number of successful executed commands from Simulation.Execute
 
 allow the application logic to specify table dimensions
 create rectangle table base class, with square table inheriting from it
@@ -154,3 +155,4 @@ clear/reset command
 command synonyms/aliases i.e. aboutface, turnaround, M (move), L (left), R (right) etc
 multiple robots
 multiple tables
+save & recall simulation state

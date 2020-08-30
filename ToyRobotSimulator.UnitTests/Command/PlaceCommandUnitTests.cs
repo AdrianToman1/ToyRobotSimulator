@@ -11,8 +11,8 @@ namespace ToyRobotSimulator.UnitTests.Command
         {
             // Arrange
             var table = new Table();
-            var x = 0;
-            var y = 0;
+            var x = 1;
+            var y = 2;
             var heading = CompassPoint.North;
 
             // Act
