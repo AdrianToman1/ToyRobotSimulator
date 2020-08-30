@@ -36,7 +36,7 @@ namespace ToyRobotSimulator.UnitTests
             var robot = new Robot();
 
             // Act & Assert
-            Assert.Throws<ArgumentException>( () => robot.PlaceOnTable(new Table(), -1, -1, 0));
+            Assert.Throws<ArgumentException>(() => robot.PlaceOnTable(new Table(), -1, -1, 0));
         }
 
         [Fact]
@@ -94,7 +94,7 @@ namespace ToyRobotSimulator.UnitTests
         }
 
         [Fact]
-        public void PlaceOnTable_HeadingNegative90_Heading90()
+        public void PlaceOnTable_HeadingNegative90_Heading270()
         {
             // Arrange
             var robot = new Robot();
@@ -107,7 +107,7 @@ namespace ToyRobotSimulator.UnitTests
             robot.PlaceOnTable(table, x, y, heading);
 
             // Assert
-            Assert.Equal(90, robot.Heading);
+            Assert.Equal(270, robot.Heading);
         }
 
         [Fact]

@@ -85,7 +85,12 @@ namespace ToyRobotSimulator
             Table = table;
             X = x;
             Y = y;
-            Heading = Math.Abs(heading) % 360;
+            Heading = heading % 360;
+
+            if (Heading < 0)
+            {
+                Heading = 360 + Heading;
+            }
         }
 
         /// <summary>
