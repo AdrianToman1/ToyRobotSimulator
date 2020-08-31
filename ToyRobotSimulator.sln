@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30330.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToyRobotSimulator", "ToyRobotSimulator\ToyRobotSimulator.csproj", "{1E640C30-9121-41C7-BB7E-E41023659CBA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToyRobotSimulator", "ToyRobotSimulator\ToyRobotSimulator.csproj", "{1E640C30-9121-41C7-BB7E-E41023659CBA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solutions Items", "Solutions Items", "{9E1C5132-DCCB-4FE8-8323-58DEBE0DD8C0}"
 	ProjectSection(SolutionItems) = preProject
@@ -13,7 +13,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solutions Items", "Solution
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToyRobotSimulator.UnitTests", "ToyRobotSimulator.UnitTests\ToyRobotSimulator.UnitTests.csproj", "{0A138C26-0E8F-4018-94FF-96EBDE577753}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToyRobotSimulator.UnitTests", "ToyRobotSimulator.UnitTests\ToyRobotSimulator.UnitTests.csproj", "{0A138C26-0E8F-4018-94FF-96EBDE577753}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToyRobotSimulator.ConsoleApp", "ToyRobotSimulator.ConsoleApp\ToyRobotSimulator.ConsoleApp.csproj", "{9FFA2555-04B5-4C3D-90B8-4EA9B63DA893}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{0A138C26-0E8F-4018-94FF-96EBDE577753}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A138C26-0E8F-4018-94FF-96EBDE577753}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A138C26-0E8F-4018-94FF-96EBDE577753}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FFA2555-04B5-4C3D-90B8-4EA9B63DA893}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FFA2555-04B5-4C3D-90B8-4EA9B63DA893}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FFA2555-04B5-4C3D-90B8-4EA9B63DA893}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FFA2555-04B5-4C3D-90B8-4EA9B63DA893}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
