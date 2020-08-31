@@ -5,3 +5,4 @@
 30/8/2020,2.0,Finalised Commands.
 30/8/2020,0.5,Refactor Robot.Heading to normalise to the range 0 - 359.
 31/8/2020,2.0,Create simulation context & refactor robot in command.
+1/9/2020,1.0,Refactoring. Creating tests for examples in The Challenge. Developed regex. 
