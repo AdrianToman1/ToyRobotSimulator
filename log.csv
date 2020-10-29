@@ -1,8 +1,13 @@
-﻿23/8/2020,3.0,Initial project setup and analysis of the requirements
-24/8/2020,1.0,Created Table and Robot classes. Thought more about how to best represent robot heading and location.
-25/8/2020,2.5,Finalised Table and Robot classes. Commenced work on Commands.
-26/8/2020,1.5,Continued work on Commands.
-30/8/2020,2.0,Finalised Commands.
-30/8/2020,0.5,Refactor Robot.Heading to normalise to the range 0 - 359.
-31/8/2020,2.0,Create simulation context & refactor robot in command.
-1/9/2020,1.0,Refactoring. Creating tests for examples in The Challenge. Developed regex. 
+﻿23/08/2020,3.0,Initial project setup and analysis of the requirements
+24/08/2020,1.0,Created Table and Robot classes. Thought more about how to best represent robot heading and location.
+25/08/2020,2.5,Finalised Table and Robot classes. Commenced work on Commands.
+26/08/2020,1.5,Continued work on Commands.
+30/08/2020,2.0,Finalised Commands.
+30/08/2020,0.5,Refactor Robot.Heading to normalise to the range 0 - 359.
+31/08/2020,2.0,Create simulation context & refactor robot in command.
+01/09/2020,1.0,Refactoring. Creating tests for examples in The Challenge. Developed regex.
+02/09/2020,1.0,Researched how parsing and lexing and considered how to best integrate parsing a collection of commands AND provide an meaniful an error message! Settled on using a static methodthe like int, Guigs etc in the .NET framework. 
+06/09/2020,1.0,Initial work on the command interpreter code.
+26/10/2020,2.0,Agnosied over variable names and wording for internal documentation for the lexing and parsing code. 
+26/10/2020,2.0,Moving forward. Completed parsing code and added a ton of unit tests. 
+26/10/2020,1.0,Finalised command interpreter code. Commenced work on console application.

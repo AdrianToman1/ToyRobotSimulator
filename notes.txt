@@ -18,18 +18,18 @@ The robot needs to know it's the location on the table as cartesian coordinates.
 executed."
 This statement implies that a robot can have 0 or 1 tables, with 0 tables as the default state. The PLACE commands the assigns a robot to a table. Therefore, the robot's heading and location are nullable.
 
-A command can both relative to the robots current location (LEFT, RIGHT and MOVE) and absolute (PLACE).
+A command can both be relative to the robots current location (LEFT, RIGHT and MOVE) and absolute (PLACE).
 
 The Challenge is written in a way that it allows the developer to think of the problem as a board game where the table is 5 x 5 grid of squares, and the toy robot occupies one of those squares.
 This raises the interesting question: What is the width of the robot? If the robot "must be prevented from falling to destruction" can it safely occupy the locations at the very edge of the table without toppling off?
-Since some of the examples begin with the robot on the edge of the table, it is reasonable to assume that the robot has no width (is a point).
+Since some of the examples begin with the robot on the edge of the table, it is reasonable to assume that the robot has no width (ie. it is a point).
 
-The problem doesn't prescribe or otherwise define length as a value. Instead refers to the unit of measure for length abstractly as "units", and all the example length values are integers.
+The problem doesn't prescribe, or otherwise define, length as a value. Instead refers to the unit of measure for length abstractly as "units", and all the example length values are integers.
 Can length be a real number???
 
 There is distinct application logic and domain logic. A solution that seeks to provide a clear separation between the application logic and domain logic would be regarded more highly than one that didn't.
 Commands are the only mechanism that the application logic interfaces with the domain logic.
-Command as defined by the problem description lends itself to be an interface, with the concrete implementation being a hierarchy of classes. i.e Abstract Turn, LeftTurn, RightTurn
+Commands as defined by the problem description lends itself to be an interface, with the concrete implementation being a hierarchy of classes. i.e Abstract Turn, LeftTurn, RightTurn
 The Challenge implies that commands are executed only on exactly 1 robot.
 Commands don't know about tables, and vice-versa
 
@@ -37,7 +37,7 @@ Command results will require success, errors and warnings!
 
 The Challenge isn't prescriptive regarding the application logic, leaving much of the detail to the developer discretion.
 The Challenge leaves it to the developer to choose whether to support file or standard input. It's transparent that a solution that implements both methods would be more highly regarded than a solution only implemented one.
-The Challenge makes no mention if it is a requirement that commands executed individually or as a batch (or both). However, if your support both file and standard input, then it follows both batch and single command executed is required.
+The Challenge makes no mention if it is a requirement that commands executed individually or as a batch (or both). However, if your support both file and standard input, then it follows that both batch and single command executed is required.
 
 Application logic needs to include a parsing and a lexing code. Even though both of these functions should be trivial to implement, a good solution would keep them distinct.
 
@@ -57,7 +57,7 @@ commands"
 
 Command interface to include "complete" flag.
 Command interface to include command result, and message.
-I am thinking that the command with analogous to a .NET Task class.
+My thinking is that the command class can be considered to be analogous to a .NET Task class.
 
 Application default state:
 1 Robot, not placed. (No heading or direction)
@@ -92,17 +92,17 @@ LEFT +90
 RIGHT -90
 
 NORTH 90
-SOUTH 180
+SOUTH 270
 EAST 0
-WEST 270
+WEST 180
 
-This simplies the logic required to determine the robots new heading after a turn as can be done mathematically, not unlike using unit vectors.
-If robot is placed facing north (90), then makes a right turn (-90) the robot's new heading will be 90-90 = 0 or EAST.
+This simplies the logic required to determine the robots new heading after a turn as can be done mathematically, not unlike using a unit vector to represent the heading.
+If robot is placed facing NORTH (90), then makes a RIGHT (-90) turn the robot's new heading will be 90 + (-90) = 90 - 90 = 0 or EAST.
 
 Will need to use modulo operator to handle the modular arithmetic.
 
-Should the cartesian coordinates be a tuple, or other suitable class, instead of 2 single values?
-Should the heading by it's own class containing encompassing all the required logic do turns etc.
+Should the cartesian coordinates be a tuple, or another suitable class, instead of 2 single values?
+Should the heading be it's own class containing all the required logic do turns etc.
 
 
 Determine a vector's x and y components from it's magitude (v) and direction (a).
@@ -128,7 +128,7 @@ Brad suggested that using a "controller pattern and some model classes to hold s
 
 
 
-^([\w\d]+) ?([\w\d,]*)$
+^([\w]+) ?([\w,]*)$
 
 Regex expression to capture command text into command (group 1) and option param list (group 2).
 Will need to split the comma seperated list seperately. Regex doesn't do structure.

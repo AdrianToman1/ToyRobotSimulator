@@ -3,7 +3,7 @@ using System.IO;
 using ToyRobotSimulator.Commands;
 using Xunit;
 
-namespace ToyRobotSimulator.SimulationTests
+namespace ToyRobotSimulator.IntegrationTests
 {
     /// <remarks>
     ///     These tests are the three examples from The Challenge
@@ -15,17 +15,19 @@ namespace ToyRobotSimulator.SimulationTests
         {
             // Arrange
             var simulation = new Simulation();
-            var table = new Table();
             var textWriter = new StringWriter();
-            var commands = new List<Commands.Command>
+            var commands = new []
             {
-                new PlaceCommand(table, 0, 0, CompassPoint.North),
-                new MoveCommand(),
-                new ReportCommand(textWriter)
+                "PLACE 0,0,North",
+                "MOVE",
+                "REPORT"
             };
 
             // Act
-            simulation.Execute(commands);
+            foreach (var command in commands)
+            {
+                simulation.Execute(Command.Parse(command, textWriter));
+            }
 
             // Assert
             Assert.Equal("0,1,North", textWriter.ToString().TrimEnd());
@@ -36,17 +38,19 @@ namespace ToyRobotSimulator.SimulationTests
         {
             // Arrange
             var simulation = new Simulation();
-            var table = new Table();
             var textWriter = new StringWriter();
-            var commands = new List<Commands.Command>
+            var commands = new[]
             {
-                new PlaceCommand(table, 0, 0, CompassPoint.North),
-                new LeftCommand(),
-                new ReportCommand(textWriter)
+                "PLACE 0,0,North",
+                "LEFT",
+                "REPORT"
             };
 
             // Act
-            simulation.Execute(commands);
+            foreach (var command in commands)
+            {
+                simulation.Execute(Command.Parse(command, textWriter));
+            }
 
             // Assert
             Assert.Equal("0,0,West", textWriter.ToString().TrimEnd());
@@ -57,20 +61,22 @@ namespace ToyRobotSimulator.SimulationTests
         {
             // Arrange
             var simulation = new Simulation();
-            var table = new Table();
             var textWriter = new StringWriter();
-            var commands = new List<Commands.Command>
+            var commands = new[]
             {
-                new PlaceCommand(table, 1, 2, CompassPoint.East),
-                new MoveCommand(),
-                new MoveCommand(),
-                new LeftCommand(),
-                new MoveCommand(),
-                new ReportCommand(textWriter)
+                "PLACE 1,2,East",
+                "MOVE",
+                "MOVE",
+                "LEFT",
+                "MOVE",
+                "REPORT"
             };
 
             // Act
-            simulation.Execute(commands);
+            foreach (var command in commands)
+            {
+                simulation.Execute(Command.Parse(command, textWriter));
+            }
 
             // Assert
             Assert.Equal("3,3,North", textWriter.ToString().TrimEnd());
