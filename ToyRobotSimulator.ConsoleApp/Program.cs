@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using ToyRobotSimulator.Commands;
 
 namespace ToyRobotSimulator.ConsoleApp
@@ -27,32 +28,63 @@ namespace ToyRobotSimulator.ConsoleApp
                 return;
             }
 
-            string[] lines = null;
+            var simulation = new Simulation();
 
             try
             {
-                lines = File.ReadAllLines(args[0]);
+                BoundedMode(args[0], simulation, Console.Out);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
             }
 
-            if (lines != null)
-            {
-                var simulation = new Simulation();
-
-                foreach (var command in lines)
-                {
-                    simulation.Execute(Command.Parse(command, Console.Out));
-                }
-
-                Console.WriteLine();
-                Console.WriteLine("Simulation Complete");
-            }
-
             Console.WriteLine("Press any key to close this window. . .");
             Console.ReadKey();
+        }
+
+        /// <summary>
+        ///     Executes commands from the file at the provided filePath on the provided simulation. The simulation ends once all the commands in the file have been executed.
+        /// </summary>
+        /// <param name="filePath">The path to the file.</param>
+        /// <param name="simulation">The simulation.</param>
+        /// <param name="textWriter">The output destination.</param>
+        private static void BoundedMode(string filePath, Simulation simulation, TextWriter textWriter)
+        {
+            if (filePath == null)
+            {
+                throw new ArgumentNullException(nameof(filePath));
+            }
+
+            if (string.IsNullOrWhiteSpace(filePath))
+            {
+                throw new ArgumentException($"{nameof(filePath)} must have a value", nameof(filePath));
+            }
+
+            if (simulation == null)
+            {
+                throw new ArgumentNullException(nameof(simulation));
+            }
+
+            if (textWriter == null)
+            {
+                throw new ArgumentNullException(nameof(textWriter));
+            }
+
+            var lines = File.ReadAllLines(filePath).Where(s => !string.IsNullOrWhiteSpace(s)).ToList();
+
+            if (!lines.Any())
+            {
+                textWriter.WriteLine("The file contains no commands");
+            }
+
+            foreach (var command in lines)
+            {
+                simulation.Execute(Command.Parse(command, textWriter));
+            }
+
+            textWriter.WriteLine();
+            textWriter.WriteLine("Simulation Complete");
         }
     }
 }
