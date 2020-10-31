@@ -8,6 +8,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solutions Items", "Solutions Items", "{9E1C5132-DCCB-4FE8-8323-58DEBE0DD8C0}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		example-a.txt = example-a.txt
+		example-b.txt = example-b.txt
+		example-c.txt = example-c.txt
+		example-command-file.txt = example-command-file.txt
 		log.csv = log.csv
 		notes.txt = notes.txt
 		README.md = README.md
@@ -15,9 +19,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solutions Items", "Solution
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToyRobotSimulator.UnitTests", "ToyRobotSimulator.UnitTests\ToyRobotSimulator.UnitTests.csproj", "{0A138C26-0E8F-4018-94FF-96EBDE577753}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToyRobotSimulator.ConsoleApp", "ToyRobotSimulator.ConsoleApp\ToyRobotSimulator.ConsoleApp.csproj", "{9FFA2555-04B5-4C3D-90B8-4EA9B63DA893}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToyRobotSimulator.ConsoleApp", "ToyRobotSimulator.ConsoleApp\ToyRobotSimulator.ConsoleApp.csproj", "{9FFA2555-04B5-4C3D-90B8-4EA9B63DA893}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToyRobotSimulator.IntegrationTests", "ToyRobotSimulator.IntegrationTests\ToyRobotSimulator.IntegrationTests.csproj", "{5652426A-38BA-4043-B2B5-09ABA2740A6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToyRobotSimulator.IntegrationTests", "ToyRobotSimulator.IntegrationTests\ToyRobotSimulator.IntegrationTests.csproj", "{5652426A-38BA-4043-B2B5-09ABA2740A6E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

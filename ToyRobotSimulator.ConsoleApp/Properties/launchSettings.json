@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ToyRobotSimulator.ConsoleApp": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\Users\\AdrianToman\\source\\repos\\ToyRobotSimulator\\example-command-file.txt"
+    }
+  }
+}

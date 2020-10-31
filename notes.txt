@@ -148,6 +148,26 @@ Lines of text
     V
 Commands
 
+
+
+
+
+Create a fancy README.md file with a video showing off the Toy Robot Simulator in action like in this repo:
+https://github.com/kefranabg/readme-md-generator
+
+
+When does the simulation end???
+Application logic will require two different modes:
+- bounded
+- free
+
+In the bounded mode the app will only accept commands from a file and the simulate will be complete once all the commands have finished executing.
+
+In free mode the app will accept single commands (and possible batches of commands from a file) for as long as the user desires. This will require a method a exiting the simulation gracefully.
+
+I was think that app only goes into bounded mode when the file name is provided as a command line argument. Maybe, there could be an additional flag that will execute the commands and then leave the app in free mode. 
+
+
 Ideas
 -----
 initial square table constant dimensions with no knowledge of the robot
