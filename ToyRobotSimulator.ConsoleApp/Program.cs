@@ -22,39 +22,38 @@ namespace ToyRobotSimulator.ConsoleApp
         /// </param>
         public static void Main(string[] args)
         {
-            var simulation = new Simulation();
-
             try
             {
                 if (args.Any())
                 {
-                    BoundedMode(args[0], simulation, Console.Out);
+                    BoundedMode(args[0], Console.Out);
+
+                    Console.WriteLine();
+                    Console.WriteLine("Simulation Complete");
                 }
                 else
                 {
-                    FreeMode(simulation, Console.In, Console.Out);
+                    Console.WriteLine("Simulation Ready");
+                    Console.WriteLine();
+
+                    FreeMode(Console.In, Console.Out);
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
             }
-
-            Console.WriteLine("Press any key to close this window. . .");
-            Console.ReadKey();
         }
 
         /// <summary>
-        ///     Executes commands from the file at the provided filePath on the provided simulation. The simulation will be completed once all the commands in the file have been executed.
+        ///     Runs a simulation and executes commands on it from the file at the provided filePath. The simulation will be completed once all the commands in the file have been executed.
         /// </summary>
         /// <param name="filePath">The path to the file.</param>
-        /// <param name="simulation">The simulation.</param>
-        /// <param name="textWriter">Standard output.</param>
+        /// <param name="standardOutput">Standard output.</param>
         /// <exception cref="ArgumentNullException"><c>filePath</c> is null</exception>
-        /// <exception cref="ArgumentNullException"><c>simulation</c> is null</exception>
         /// <exception cref="ArgumentNullException"><c>textWriter</c> is null</exception>
         /// <exception cref="ArgumentException"><c>filePath</c> is empty or whitespace</exception>
-        private static void BoundedMode(string filePath, Simulation simulation, TextWriter textWriter)
+        private static void BoundedMode(string filePath, TextWriter standardOutput)
         {
             if (filePath == null)
             {
@@ -66,69 +65,55 @@ namespace ToyRobotSimulator.ConsoleApp
                 throw new ArgumentException($"{nameof(filePath)} must have a value", nameof(filePath));
             }
 
-            if (simulation == null)
+            if (standardOutput == null)
             {
-                throw new ArgumentNullException(nameof(simulation));
-            }
-
-            if (textWriter == null)
-            {
-                throw new ArgumentNullException(nameof(textWriter));
+                throw new ArgumentNullException(nameof(standardOutput));
             }
 
             var lines = File.ReadAllLines(filePath).Where(s => !string.IsNullOrWhiteSpace(s)).ToList();
 
             if (!lines.Any())
             {
-                textWriter.WriteLine("The file contains no commands");
+                standardOutput.WriteLine("The file contains no commands");
             }
 
+            var simulation = new Simulation();
+            
             foreach (var command in lines)
             {
-                simulation.Execute(Command.Parse(command, textWriter));
+                simulation.Execute(Command.Parse(command, standardOutput));
             }
-
-            textWriter.WriteLine();
-            textWriter.WriteLine("Simulation Complete");
         }
 
         /// <summary>
-        ///     Executes commands from standard input on the provided simulation until the user choose the end the simulation.
+        ///     Runs a simulation and executes commands on it from standard input until the user chooses the end the simulation.
         /// </summary>
-        /// <param name="simulation">The simulation.</param>
-        /// <param name="textReader">Standard input.</param>
-        /// <param name="textWriter">Standard output.</param>
-        /// <exception cref="ArgumentNullException"><c>simulation</c> is null</exception>
+        /// <param name="standardInput">Standard input.</param>
+        /// <param name="standardOutput">Standard output.</param>
         /// <exception cref="ArgumentNullException"><c>textWriter</c> is null</exception>
-        private static void FreeMode(Simulation simulation, TextReader textReader, TextWriter textWriter)
+        private static void FreeMode(TextReader standardInput, TextWriter standardOutput)
         {
-            if (simulation == null)
+            if (standardInput == null)
             {
-                throw new ArgumentNullException(nameof(simulation));
+                throw new ArgumentNullException(nameof(standardInput));
             }
 
-            if (textReader == null)
+            if (standardOutput == null)
             {
-                throw new ArgumentNullException(nameof(textReader));
+                throw new ArgumentNullException(nameof(standardOutput));
             }
 
-            if (textWriter == null)
-            {
-                throw new ArgumentNullException(nameof(textWriter));
-            }
+            var simulation = new Simulation();
 
-            textWriter.WriteLine("Simulation Ready");
-            textWriter.WriteLine();
-
-            while (true)
+            do
             {
-                var command = textReader.ReadLine()?.Trim();
+                var command = standardInput.ReadLine()?.Trim();
 
                 if (!string.IsNullOrWhiteSpace(command))
                 {
-                    simulation.Execute(Command.Parse(command, textWriter));
+                    simulation.Execute(Command.Parse(command, standardOutput));
                 }
-            }
+            } while (true);
         }
     }
 }

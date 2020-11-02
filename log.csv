@@ -12,3 +12,6 @@
 26/10/2020,2.0,Moving forward. Completed parsing code and added a ton of unit tests. 
 30/10/2020,1.0,Finalised command interpreter code. Commenced work on console application.
 31/10/2020,1.0,Brought console application to a runnable state.
+01/10/2020,1.0,Refactored file input cond in console application into a "bounded" mode. Bounded because the simulation life is bounded to the commands in the file.
+02/10/2020,0.5,Implemented accepting commands via standard input.
+03/10/2020,0.5,Refactor application code
