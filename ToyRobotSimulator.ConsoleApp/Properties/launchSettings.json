@@ -1,8 +1,7 @@
 {
   "profiles": {
     "ToyRobotSimulator.ConsoleApp": {
-      "commandName": "Project",
-      "commandLineArgs": "..\\..\\..\\..\\example-command-file.txt"
+      "commandName": "Project"
     }
   }
 }

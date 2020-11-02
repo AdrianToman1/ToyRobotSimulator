@@ -20,19 +20,20 @@ namespace ToyRobotSimulator.ConsoleApp
         ///     The command-line arguments supplied when the application is launched. The first parameter must be
         ///     the location of the text file the contains the commands to execute on the Toy Robot Simulator.
         /// </param>
-        private static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            if (args.Length == 0)
-            {
-                Console.WriteLine("No command file provided");
-                return;
-            }
-
             var simulation = new Simulation();
 
             try
             {
-                BoundedMode(args[0], simulation, Console.Out);
+                if (args.Any())
+                {
+                    BoundedMode(args[0], simulation, Console.Out);
+                }
+                else
+                {
+                    FreeMode(simulation, Console.In, Console.Out);
+                }
             }
             catch (Exception e)
             {
@@ -44,11 +45,15 @@ namespace ToyRobotSimulator.ConsoleApp
         }
 
         /// <summary>
-        ///     Executes commands from the file at the provided filePath on the provided simulation. The simulation ends once all the commands in the file have been executed.
+        ///     Executes commands from the file at the provided filePath on the provided simulation. The simulation will be completed once all the commands in the file have been executed.
         /// </summary>
         /// <param name="filePath">The path to the file.</param>
         /// <param name="simulation">The simulation.</param>
-        /// <param name="textWriter">The output destination.</param>
+        /// <param name="textWriter">Standard output.</param>
+        /// <exception cref="ArgumentNullException"><c>filePath</c> is null</exception>
+        /// <exception cref="ArgumentNullException"><c>simulation</c> is null</exception>
+        /// <exception cref="ArgumentNullException"><c>textWriter</c> is null</exception>
+        /// <exception cref="ArgumentException"><c>filePath</c> is empty or whitespace</exception>
         private static void BoundedMode(string filePath, Simulation simulation, TextWriter textWriter)
         {
             if (filePath == null)
@@ -85,6 +90,45 @@ namespace ToyRobotSimulator.ConsoleApp
 
             textWriter.WriteLine();
             textWriter.WriteLine("Simulation Complete");
+        }
+
+        /// <summary>
+        ///     Executes commands from standard input on the provided simulation until the user choose the end the simulation.
+        /// </summary>
+        /// <param name="simulation">The simulation.</param>
+        /// <param name="textReader">Standard input.</param>
+        /// <param name="textWriter">Standard output.</param>
+        /// <exception cref="ArgumentNullException"><c>simulation</c> is null</exception>
+        /// <exception cref="ArgumentNullException"><c>textWriter</c> is null</exception>
+        private static void FreeMode(Simulation simulation, TextReader textReader, TextWriter textWriter)
+        {
+            if (simulation == null)
+            {
+                throw new ArgumentNullException(nameof(simulation));
+            }
+
+            if (textReader == null)
+            {
+                throw new ArgumentNullException(nameof(textReader));
+            }
+
+            if (textWriter == null)
+            {
+                throw new ArgumentNullException(nameof(textWriter));
+            }
+
+            textWriter.WriteLine("Simulation Ready");
+            textWriter.WriteLine();
+
+            while (true)
+            {
+                var command = textReader.ReadLine()?.Trim();
+
+                if (!string.IsNullOrWhiteSpace(command))
+                {
+                    simulation.Execute(Command.Parse(command, textWriter));
+                }
+            }
         }
     }
 }

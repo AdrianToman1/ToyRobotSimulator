@@ -20,7 +20,7 @@ namespace ToyRobotSimulator.Commands
                 // Get the x and y component of the vector to move the robot in.
 
                 // The magnitude of the vector is 1.
-                // Since the heading will be a multiple of 90 degrees the sine, cosine values will either be 0, 1 or -1.
+                // Since the heading will be a multiple of 90 degrees the sine and cosine values will either be 0, 1 or -1.
                 var xMove = (int) Math.Cos(Math.PI / 180 * robot.Heading.Value);
                 var yMove = (int) Math.Sin(Math.PI / 180 * robot.Heading.Value);
 

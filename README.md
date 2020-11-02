@@ -2,7 +2,7 @@
 
 ## Instructions
 
-The Toy Robot Simulator only accepts commands from a text file.
+The Toy Robot Simulator can accept commands from a text file.
 
     ToyRobotSimulator.ConsoleApp.exe example-command-file.txt
 
