@@ -3,10 +3,10 @@ using System.IO;
 using ToyRobotSimulator.Commands;
 using Xunit;
 
-namespace ToyRobotSimulator.IntegrationTests
+namespace ToyRobotSimulator.FunctionalTests
 {
     /// <remarks>
-    ///     These tests are the three examples from The Challenge
+    ///     These tests are the three examples from The Challenge.
     /// </remarks>
     public class TheChallengeExamples
     {

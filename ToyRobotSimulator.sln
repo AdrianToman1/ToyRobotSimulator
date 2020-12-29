@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToyRobotSimulator.UnitTests
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToyRobotSimulator.ConsoleApp", "ToyRobotSimulator.ConsoleApp\ToyRobotSimulator.ConsoleApp.csproj", "{9FFA2555-04B5-4C3D-90B8-4EA9B63DA893}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToyRobotSimulator.IntegrationTests", "ToyRobotSimulator.IntegrationTests\ToyRobotSimulator.IntegrationTests.csproj", "{5652426A-38BA-4043-B2B5-09ABA2740A6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToyRobotSimulator.FunctionalTests", "ToyRobotSimulator.FunctionalTests\ToyRobotSimulator.FunctionalTests.csproj", "{693C3DCD-3FD4-49DF-BC12-EB54D164AD9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +41,10 @@ Global
 		{9FFA2555-04B5-4C3D-90B8-4EA9B63DA893}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FFA2555-04B5-4C3D-90B8-4EA9B63DA893}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FFA2555-04B5-4C3D-90B8-4EA9B63DA893}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5652426A-38BA-4043-B2B5-09ABA2740A6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5652426A-38BA-4043-B2B5-09ABA2740A6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5652426A-38BA-4043-B2B5-09ABA2740A6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5652426A-38BA-4043-B2B5-09ABA2740A6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{693C3DCD-3FD4-49DF-BC12-EB54D164AD9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{693C3DCD-3FD4-49DF-BC12-EB54D164AD9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{693C3DCD-3FD4-49DF-BC12-EB54D164AD9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{693C3DCD-3FD4-49DF-BC12-EB54D164AD9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
